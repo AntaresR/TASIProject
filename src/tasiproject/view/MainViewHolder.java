@@ -71,7 +71,9 @@ public class MainViewHolder extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiRegisterEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegisterEmployeeActionPerformed
-        // TODO add your handling code here:
+         RegisterEmployee re = new RegisterEmployee();
+         re.setVisible(true);
+         this.add(re);
     }//GEN-LAST:event_jmiRegisterEmployeeActionPerformed
 
     /**
