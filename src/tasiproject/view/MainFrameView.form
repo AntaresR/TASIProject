@@ -27,10 +27,18 @@
             <Property name="text" type="java.lang.String" value="Schedules"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMIRegisterSchedule">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Register"/>
+              </Properties>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMIAssignToEmployee">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Assign to Employee"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIAssignToEmployeeActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

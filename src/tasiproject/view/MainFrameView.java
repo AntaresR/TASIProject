@@ -9,12 +9,12 @@ package tasiproject.view;
  *
  * @author paolo
  */
-public class MainViewHolder extends javax.swing.JFrame {
+public class MainFrameView extends javax.swing.JFrame {
 
     /**
      * Creates new form MainViewHolder
      */
-    public MainViewHolder() {
+    public MainFrameView() {
         initComponents();
     }
 
@@ -31,6 +31,7 @@ public class MainViewHolder extends javax.swing.JFrame {
         jMEmployee = new javax.swing.JMenu();
         jmiRegisterEmployee = new javax.swing.JMenuItem();
         jMSchedule = new javax.swing.JMenu();
+        jMIRegisterSchedule = new javax.swing.JMenuItem();
         jMIAssignToEmployee = new javax.swing.JMenuItem();
         jMenuJustifications = new javax.swing.JMenu();
         jMIJustify = new javax.swing.JMenuItem();
@@ -53,7 +54,15 @@ public class MainViewHolder extends javax.swing.JFrame {
 
         jMSchedule.setText("Schedules");
 
+        jMIRegisterSchedule.setText("Register");
+        jMSchedule.add(jMIRegisterSchedule);
+
         jMIAssignToEmployee.setText("Assign to Employee");
+        jMIAssignToEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIAssignToEmployeeActionPerformed(evt);
+            }
+        });
         jMSchedule.add(jMIAssignToEmployee);
 
         jMenuBar1.add(jMSchedule);
@@ -85,10 +94,16 @@ public class MainViewHolder extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiRegisterEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegisterEmployeeActionPerformed
-         RegisterEmployee re = new RegisterEmployee();
-         re.setVisible(true);
-         this.add(re);
+        RegisterEmployeeView re = new RegisterEmployeeView();
+        re.setVisible(true);
+        this.add(re);
     }//GEN-LAST:event_jmiRegisterEmployeeActionPerformed
+
+    private void jMIAssignToEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAssignToEmployeeActionPerformed
+        AssigntoEmployeeView atev = new AssigntoEmployeeView();
+        atev.setVisible(true);
+        this.add(atev);
+    }//GEN-LAST:event_jMIAssignToEmployeeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,20 +122,21 @@ public class MainViewHolder extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainViewHolder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrameView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainViewHolder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrameView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainViewHolder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrameView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainViewHolder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrameView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainViewHolder().setVisible(true);
+                new MainFrameView().setVisible(true);
             }
         });
     }
@@ -129,6 +145,7 @@ public class MainViewHolder extends javax.swing.JFrame {
     private javax.swing.JMenu jMEmployee;
     private javax.swing.JMenuItem jMIAssignToEmployee;
     private javax.swing.JMenuItem jMIJustify;
+    private javax.swing.JMenuItem jMIRegisterSchedule;
     private javax.swing.JMenu jMSchedule;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuJustifications;

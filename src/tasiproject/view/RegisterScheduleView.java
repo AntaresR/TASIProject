@@ -14,12 +14,12 @@ import tasiproject.models.Schedule;
  *
  * @author paolo
  */
-public class RegisterSchedule extends javax.swing.JInternalFrame {
+public class RegisterScheduleView extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form RegisterSchedule
      */
-    public RegisterSchedule() {
+    public RegisterScheduleView() {
         initComponents();
     }
 
