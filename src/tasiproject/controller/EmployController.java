@@ -5,11 +5,18 @@
  */
 package tasiproject.controller;
 
+import tasiproject.models.Employ;
+
 /**
+ *
  * @author paolo
- * Here you ll activate your account which will inmediatly let you log into the app
- * and so on and so on
  */
-public class ArrivalController {
+public class EmployController {
+    public static Employ getEmployByName(String EmployName) {
+        Employ employ = new Employ();
+        //Get from database
+        
+        return employ;
+    }
     
 }

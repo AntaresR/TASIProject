@@ -30,12 +30,15 @@ public class MainViewHolder extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMEmployee = new javax.swing.JMenu();
         jmiRegisterEmployee = new javax.swing.JMenuItem();
+        jMSchedule = new javax.swing.JMenu();
+        jMIAssignToEmployee = new javax.swing.JMenuItem();
         jMenuJustifications = new javax.swing.JMenu();
+        jMIJustify = new javax.swing.JMenuItem();
         jMenuReport = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMEmployee.setText("Personal");
+        jMEmployee.setText("Employee");
 
         jmiRegisterEmployee.setText("Register");
         jmiRegisterEmployee.addActionListener(new java.awt.event.ActionListener() {
@@ -48,7 +51,18 @@ public class MainViewHolder extends javax.swing.JFrame {
 
         jMenuBar1.add(jMEmployee);
 
+        jMSchedule.setText("Schedules");
+
+        jMIAssignToEmployee.setText("Assign to Employee");
+        jMSchedule.add(jMIAssignToEmployee);
+
+        jMenuBar1.add(jMSchedule);
+
         jMenuJustifications.setText("Justifications");
+
+        jMIJustify.setText("Justify");
+        jMenuJustifications.add(jMIJustify);
+
         jMenuBar1.add(jMenuJustifications);
 
         jMenuReport.setText("Report");
@@ -113,6 +127,9 @@ public class MainViewHolder extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMEmployee;
+    private javax.swing.JMenuItem jMIAssignToEmployee;
+    private javax.swing.JMenuItem jMIJustify;
+    private javax.swing.JMenu jMSchedule;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuJustifications;
     private javax.swing.JMenu jMenuReport;

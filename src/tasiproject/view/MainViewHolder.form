@@ -6,7 +6,7 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMEmployee">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Personal"/>
+            <Property name="text" type="java.lang.String" value="Employee"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmiRegisterEmployee">
@@ -22,10 +22,29 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="jMSchedule">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Schedules"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMIAssignToEmployee">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Assign to Employee"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuJustifications">
           <Properties>
             <Property name="text" type="java.lang.String" value="Justifications"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMIJustify">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Justify"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuReport">
           <Properties>
