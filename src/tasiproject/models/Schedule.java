@@ -6,10 +6,25 @@ import java.util.Date;
  * @author paolo
  */
 public class Schedule {
+    private int id;
     private Date beginTime;
     private Date endTime;
-    private int status;
+    private String status;
 
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     /**
      * @return the beginTime
      */
@@ -41,14 +56,14 @@ public class Schedule {
     /**
      * @return the status
      */
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
     /**
      * @param status the status to set
      */
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }

@@ -261,7 +261,7 @@ public class RegisterEmployee extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Employee saved.");
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "There was an error with saving the database.");
+            JOptionPane.showMessageDialog(this, "There was an error while saving to the database.");
         }
     }//GEN-LAST:event_jBOkActionPerformed
 
