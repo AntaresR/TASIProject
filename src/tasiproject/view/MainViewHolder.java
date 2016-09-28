@@ -27,21 +27,52 @@ public class MainViewHolder extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMEmployee = new javax.swing.JMenu();
+        jmiRegisterEmployee = new javax.swing.JMenuItem();
+        jMenuJustifications = new javax.swing.JMenu();
+        jMenuReport = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jMEmployee.setText("Personal");
+
+        jmiRegisterEmployee.setText("Register");
+        jmiRegisterEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiRegisterEmployeeActionPerformed(evt);
+            }
+        });
+        jMEmployee.add(jmiRegisterEmployee);
+        jmiRegisterEmployee.getAccessibleContext().setAccessibleName("Register");
+
+        jMenuBar1.add(jMEmployee);
+
+        jMenuJustifications.setText("Justifications");
+        jMenuBar1.add(jMenuJustifications);
+
+        jMenuReport.setText("Report");
+        jMenuBar1.add(jMenuReport);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 625, Short.MAX_VALUE)
+            .addGap(0, 695, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 329, Short.MAX_VALUE)
+            .addGap(0, 438, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmiRegisterEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegisterEmployeeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmiRegisterEmployeeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +110,10 @@ public class MainViewHolder extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMEmployee;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuJustifications;
+    private javax.swing.JMenu jMenuReport;
+    private javax.swing.JMenuItem jmiRegisterEmployee;
     // End of variables declaration//GEN-END:variables
 }
