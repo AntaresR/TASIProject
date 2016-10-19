@@ -3,71 +3,93 @@ Black box testing
 =====================================
 private String name;
 private String lastname;
-private String lastnameM;
+private String maternalLastname;
 private String identityDocument;
 private String employ;
 private Date begindate;
 private double salary;
+private String address;
+private String birthday;
+private String cellphone;
 ======================================
 1. name 
-name: correct   = "CNCOANCOA"  (a1)
+    : correct   = "CNCOANCOA"  (a1)
       incorrect = empty        (a2)
                   1232456      (a3)
                   null         (a4)
 
 2. lastname 
-name: correct   = "CNCOANCOA"  (b1)
+    : correct   = "CNCOANCOA"  (b1)
       incorrect = empty        (b2)
                   1232456      (b3)
                   null         (b4)
 
-3. lastnameM 
-name: correct   = "CNCOANCOA"  (c1)
+3. maternalLastname 
+    : correct   = "CNCOANCOA"  (c1)
       incorrect = empty        (c2)
                   1232456      (c3)
                   null         (c4)
 
 4. identityDocument 
-name: correct   = "11111111"   (d1)
+    : correct   = "11111111"   (d1)
       incorrect = empty        (d2)
                   alphanumerics(d3)
                   null         (d4)
 
 5. employ
-name: correct   = "name"       (e1)
+    : correct   = "name"       (e1)
       incorrect = empty        (e2)
                   1233445      (e3)
                   null         (e4)
 
 6. beginDate
-name: correct   = "10/10/10"   (f1)
+    : correct   = "10/10/10"   (f1)
       incorrect = null         (f2)
 
 7. salary
-name: correct   = 12234        (g1)
+    : correct   = 12234        (g1)
       incorrect = >100000      (g2)
                   <0           (g3)
 
+8. address
+    : correct   = "C. Caserio" (h1)
+      incorrect = empty        (h2)
+                  null         (h3)
+
+9. birthday
+    : correct   = "10/10/10"   (i1)
+      incorrect = null         (i2)
+                  
+10. cellphone
+    : correct   = "122341233"  (j1)
+      incorrect = empty        (j2)
+                  null         (j3)
+
 ===================================
 Correcta 
-Prueba 1 (correcta). 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g1
+Prueba 1 (correcta). 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
 
 Incorrectas
-Prueba 2 : 1a2, 2b1, 3c1, 4d1, 5e1, 6f1, 7g1
-Prueba 3 : 1a3, 2b1, 3c1, 4d1, 5e1, 6f1, 7g1
-Prueba 4 : 1a4, 2b1, 3c1, 4d1, 5e1, 6f1, 7g1
-Prueba 5 : 1a1, 2b2, 3c1, 4d1, 5e1, 6f1, 7g1
-Prueba 6 : 1a1, 2b3, 3c1, 4d1, 5e1, 6f1, 7g1
-Prueba 7 : 1a1, 2b4, 3c1, 4d1, 5e1, 6f1, 7g1
-Prueba 8 : 1a1, 2b1, 3c2, 4d1, 5e1, 6f1, 7g1
-Prueba 9 : 1a1, 2b1, 3c3, 4d1, 5e1, 6f1, 7g1
-Prueba 10 : 1a1, 2b1, 3c4, 4d1, 5e1, 6f1, 7g1
-Prueba 11 : 1a1, 2b1, 3c1, 4d2, 5e1, 6f1, 7g1
-Prueba 12 : 1a1, 2b1, 3c1, 4d3, 5e1, 6f1, 7g1
-Prueba 13 : 1a1, 2b1, 3c1, 4d4, 5e1, 6f1, 7g1
-Prueba 14 : 1a1, 2b1, 3c1, 4d1, 5e2, 6f1, 7g1
-Prueba 15 : 1a1, 2b1, 3c1, 4d1, 5e3, 6f1, 7g1
-Prueba 16 : 1a2, 2b1, 3c1, 4d1, 5e4, 6f1, 7g1
-Prueba 17 : 1a2, 2b1, 3c1, 4d1, 5e1, 6f2, 7g1
-Prueba 18 : 1a2, 2b1, 3c1, 4d1, 5e1, 6f1, 7g2
-Prueba 19 : 1a2, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3
+Prueba  2 : 1a2, 2b1, 3c1, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
+Prueba  3 : 1a3, 2b1, 3c1, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
+Prueba  4 : 1a4, 2b1, 3c1, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
+Prueba  5 : 1a1, 2b2, 3c1, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
+Prueba  6 : 1a1, 2b3, 3c1, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
+Prueba  7 : 1a1, 2b4, 3c1, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
+Prueba  8 : 1a1, 2b1, 3c2, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
+Prueba  9 : 1a1, 2b1, 3c3, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
+Prueba 10 : 1a1, 2b1, 3c4, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
+Prueba 11 : 1a1, 2b1, 3c1, 4d2, 5e1, 6f1, 7g1, h1, i1, j1
+Prueba 12 : 1a1, 2b1, 3c1, 4d3, 5e1, 6f1, 7g1, h1, i1, j1
+Prueba 13 : 1a1, 2b1, 3c1, 4d4, 5e1, 6f1, 7g1, h1, i1, j1
+Prueba 14 : 1a1, 2b1, 3c1, 4d1, 5e2, 6f1, 7g1, h1, i1, j1
+Prueba 15 : 1a1, 2b1, 3c1, 4d1, 5e3, 6f1, 7g1, h1, i1, j1
+Prueba 16 : 1a1, 2b1, 3c1, 4d1, 5e4, 6f1, 7g1, h1, i1, j1
+Prueba 17 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f2, 7g1, h1, i1, j1
+Prueba 18 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g2, h1, i1, j1
+Prueba 19 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i1, j1
+Prueba 20 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h2, i1, j1
+Prueba 21 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h3, i1, j1
+Prueba 22 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i2, j1
+Prueba 23 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i1, j2
+Prueba 24 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i1, j3
