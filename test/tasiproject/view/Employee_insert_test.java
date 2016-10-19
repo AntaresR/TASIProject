@@ -267,7 +267,7 @@ public class Employee_insert_test {
         employee.setMaternalLastName("paolo");
         employee.setCost(10121);
         employee.setEntryDate(new Date());
-        employee.setDni("no hay doc");
+        employee.setDni("no hay doc 1");
         
         employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
         employee.setBirthday(new Date());
@@ -280,40 +280,221 @@ public class Employee_insert_test {
     }
     
     // Prueba 13 : 1a1, 2b1, 3c1, 4d4, 5e1, 6f1, 7g1, h1, i1, j1
-    
+    @Test
+    public final void registerEmployee_null_identityDocument_test() {
+        //Variable initialization
+        Employee employee = new Employee();
+        employee.setName("paolo");
+        employee.setLastname("lastname");
+        employee.setMaternalLastName("paolo");
+        employee.setCost(10121);
+        employee.setEntryDate(new Date());
+        employee.setDni(null);
+        
+        employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
+        employee.setBirthday(new Date());
+        employee.setCellphone("950078142"); 
+        //TODO for now is empty 
+        Employ employ = new Employ();
+        employee.setEmploy(employ);
+
+        Assert.assertEquals(EmployeeController.registerEmployee(employee), false);
+    }
     
     // Prueba 14 : 1a1, 2b1, 3c1, 4d1, 5e2, 6f1, 7g1, h1, i1, j1
+    @Test
+    public final void registerEmployee_null_employ_test() {
+        //Variable initialization
+        Employee employee = new Employee();
+        employee.setName("paolo");
+        employee.setLastname("lastname");
+        employee.setMaternalLastName("paolo");
+        employee.setCost(10121);
+        employee.setEntryDate(new Date());
+        employee.setDni("12345");
+        
+        employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
+        employee.setBirthday(new Date());
+        employee.setCellphone("950078142"); 
+        //TODO for now is empty 
+        employee.setEmploy(null);
+
+        Assert.assertEquals(EmployeeController.registerEmployee(employee), false);
+    }
+        
+    // Prueba 15 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f2, 7g1, h1, i1, j1
+    @Test
+    public final void registerEmployee_null_begin_date_test() {
+        //Variable initialization
+        Employee employee = new Employee();
+        employee.setName("paolo");
+        employee.setLastname("lastname");
+        employee.setMaternalLastName("paolo");
+        employee.setCost(10121);
+        employee.setEntryDate(null);
+        employee.setDni("1234");
+        
+        employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
+        employee.setBirthday(new Date());
+        employee.setCellphone("950078142"); 
+        //TODO for now is empty 
+        Employ employ = new Employ();
+        employee.setEmploy(employ);
+
+        Assert.assertEquals(EmployeeController.registerEmployee(employee), false);
+    }
     
+    // Prueba 16 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g2, h1, i1, j1
+    @Test
+    public final void registerEmployee_upper_bound_salary_test() {
+        //Variable initialization
+        Employee employee = new Employee();
+        employee.setName("Paolo");
+        employee.setLastname("lastname");
+        employee.setMaternalLastName("lastnameM");
+        employee.setCost(1012100000);
+        employee.setEntryDate(new Date());
+        employee.setDni("java");
+        employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
+        employee.setBirthday(new Date());
+        employee.setCellphone("950078142");
+ 
+        //TODO for now is empty 
+        Employ employ = new Employ();
+        employee.setEmploy(employ);
+        
+        Assert.assertEquals(EmployeeController.registerEmployee(employee), false);
+    }
     
-    // Prueba 15 : 1a1, 2b1, 3c1, 4d1, 5e3, 6f1, 7g1, h1, i1, j1
+    // Prueba 17 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i1, j1
+    @Test
+    public final void registerEmployee_lower_bound_salary_test() {
+        //Variable initialization
+        Employee employee = new Employee();
+        employee.setName("Paolo");
+        employee.setLastname("lastname");
+        employee.setMaternalLastName("lastnameM");
+        employee.setCost(-1000);
+        employee.setEntryDate(new Date());
+        employee.setDni("java");
+        employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
+        employee.setBirthday(new Date());
+        employee.setCellphone("950078142");
+ 
+        //TODO for now is empty 
+        Employ employ = new Employ();
+        employee.setEmploy(employ);
+        
+        Assert.assertEquals(EmployeeController.registerEmployee(employee), false);
+    }
     
+    // Prueba 18 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h2, i1, j1
+    @Test
+    public final void registerEmployee_empty_address_test() {
+        //Variable initialization
+        Employee employee = new Employee();
+        employee.setName("Paolo");
+        employee.setLastname("lastname");
+        employee.setMaternalLastName("lastnameM");
+        employee.setCost(10121);
+        employee.setEntryDate(new Date());
+        employee.setDni("java");
+        employee.setAdress("");
+        employee.setBirthday(new Date());
+        employee.setCellphone("950078142");
+ 
+        //TODO for now is empty 
+        Employ employ = new Employ();
+        employee.setEmploy(employ);
+        
+        Assert.assertEquals(EmployeeController.registerEmployee(employee), false);
+    }
     
-    // Prueba 16 : 1a1, 2b1, 3c1, 4d1, 5e4, 6f1, 7g1, h1, i1, j1
+    // Prueba 19 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h3, i1, j1
+        @Test
+    public final void registerEmployee_null_address_test() {
+        //Variable initialization
+        Employee employee = new Employee();
+        employee.setName("Paolo");
+        employee.setLastname("lastname");
+        employee.setMaternalLastName("lastnameM");
+        employee.setCost(10121);
+        employee.setEntryDate(new Date());
+        employee.setDni("java");
+        employee.setAdress(null);
+        employee.setBirthday(new Date());
+        employee.setCellphone("950078142");
+ 
+        //TODO for now is empty 
+        Employ employ = new Employ();
+        employee.setEmploy(employ);
+        
+        Assert.assertEquals(EmployeeController.registerEmployee(employee), false);
+    }
     
+    // Prueba 20 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i2, j1
+    @Test
+    public final void registerEmployee_null_birthday_test() {
+        //Variable initialization
+        Employee employee = new Employee();
+        employee.setName("Paolo");
+        employee.setLastname("lastname");
+        employee.setMaternalLastName("lastnameM");
+        employee.setCost(10121);
+        employee.setEntryDate(new Date());
+        employee.setDni("java");
+        employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
+        employee.setBirthday(null);
+        employee.setCellphone("950078142");
+ 
+        //TODO for now is empty 
+        Employ employ = new Employ();
+        employee.setEmploy(employ);
+        
+        Assert.assertEquals(EmployeeController.registerEmployee(employee), false);
+    }
     
-    // Prueba 17 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f2, 7g1, h1, i1, j1
+    // Prueba 21 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i1, j2
+    @Test
+    public final void registerEmployee_empty_cellphone_test() {
+        //Variable initialization
+        Employee employee = new Employee();
+        employee.setName("Paolo");
+        employee.setLastname("lastname");
+        employee.setMaternalLastName("lastnameM");
+        employee.setCost(10121);
+        employee.setEntryDate(new Date());
+        employee.setDni("java");
+        employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
+        employee.setBirthday(new Date());
+        employee.setCellphone("");
+ 
+        //TODO for now is empty 
+        Employ employ = new Employ();
+        employee.setEmploy(employ);
+        
+        Assert.assertEquals(EmployeeController.registerEmployee(employee), false);
+    }
     
-    
-    // Prueba 18 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g2, h1, i1, j1
-    
-    
-    // Prueba 19 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i1, j1
-    
-    
-    // Prueba 20 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h2, i1, j1
-    
-    
-    // Prueba 21 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h3, i1, j1
-    
-    
-    // Prueba 22 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i2, j1
-    
-    
-    // Prueba 23 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i1, j2
-    
-    
-    // Prueba 24 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i1, j3
-    
-    
-    
+    // Prueba 22 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i1, j3
+        @Test
+    public final void registerEmployee_null_cellphone_test() {
+        //Variable initialization
+        Employee employee = new Employee();
+        employee.setName("Paolo");
+        employee.setLastname("lastname");
+        employee.setMaternalLastName("lastnameM");
+        employee.setCost(10121);
+        employee.setEntryDate(new Date());
+        employee.setDni("java");
+        employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
+        employee.setBirthday(new Date());
+        employee.setCellphone(null);
+ 
+        //TODO for now is empty 
+        Employ employ = new Employ();
+        employee.setEmploy(employ);
+        
+        Assert.assertEquals(EmployeeController.registerEmployee(employee), false);
+    }
 }

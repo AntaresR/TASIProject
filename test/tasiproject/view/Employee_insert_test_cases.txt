@@ -37,10 +37,8 @@ private String cellphone;
                   null         (d4)
 
 5. employ
-    : correct   = "name"       (e1)
-      incorrect = empty        (e2)
-                  1233445      (e3)
-                  null         (e4)
+    : correct   = objectSelect (e1)
+      incorrect = null         (e2)
 
 6. beginDate
     : correct   = "10/10/10"   (f1)
@@ -83,13 +81,11 @@ Prueba 11 : 1a1, 2b1, 3c1, 4d2, 5e1, 6f1, 7g1, h1, i1, j1
 Prueba 12 : 1a1, 2b1, 3c1, 4d3, 5e1, 6f1, 7g1, h1, i1, j1
 Prueba 13 : 1a1, 2b1, 3c1, 4d4, 5e1, 6f1, 7g1, h1, i1, j1
 Prueba 14 : 1a1, 2b1, 3c1, 4d1, 5e2, 6f1, 7g1, h1, i1, j1
-Prueba 15 : 1a1, 2b1, 3c1, 4d1, 5e3, 6f1, 7g1, h1, i1, j1
-Prueba 16 : 1a1, 2b1, 3c1, 4d1, 5e4, 6f1, 7g1, h1, i1, j1
-Prueba 17 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f2, 7g1, h1, i1, j1
-Prueba 18 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g2, h1, i1, j1
-Prueba 19 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i1, j1
-Prueba 20 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h2, i1, j1
-Prueba 21 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h3, i1, j1
-Prueba 22 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i2, j1
-Prueba 23 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i1, j2
-Prueba 24 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i1, j3
+Prueba 15 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f2, 7g1, h1, i1, j1
+Prueba 16 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g2, h1, i1, j1
+Prueba 17 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i1, j1
+Prueba 18 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h2, i1, j1
+Prueba 19 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h3, i1, j1
+Prueba 20 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i2, j1
+Prueba 21 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i1, j2
+Prueba 22 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i1, j3
