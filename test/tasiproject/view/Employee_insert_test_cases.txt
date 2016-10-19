@@ -1,0 +1,73 @@
+Black box testing
+7 entries
+=====================================
+private String name;
+private String lastname;
+private String lastnameM;
+private String identityDocument;
+private String employ;
+private Date begindate;
+private double salary;
+======================================
+1. name 
+name: correct   = "CNCOANCOA"  (a1)
+      incorrect = empty        (a2)
+                  1232456      (a3)
+                  null         (a4)
+
+2. lastname 
+name: correct   = "CNCOANCOA"  (b1)
+      incorrect = empty        (b2)
+                  1232456      (b3)
+                  null         (b4)
+
+3. lastnameM 
+name: correct   = "CNCOANCOA"  (c1)
+      incorrect = empty        (c2)
+                  1232456      (c3)
+                  null         (c4)
+
+4. identityDocument 
+name: correct   = "11111111"   (d1)
+      incorrect = empty        (d2)
+                  alphanumerics(d3)
+                  null         (d4)
+
+5. employ
+name: correct   = "name"       (e1)
+      incorrect = empty        (e2)
+                  1233445      (e3)
+                  null         (e4)
+
+6. beginDate
+name: correct   = "10/10/10"   (f1)
+      incorrect = null         (f2)
+
+7. salary
+name: correct   = 12234        (g1)
+      incorrect = >100000      (g2)
+                  <0           (g3)
+
+===================================
+Correcta 
+Prueba 1 (correcta). 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g1
+
+Incorrectas
+Prueba 2 : 1a2, 2b1, 3c1, 4d1, 5e1, 6f1, 7g1
+Prueba 3 : 1a3, 2b1, 3c1, 4d1, 5e1, 6f1, 7g1
+Prueba 4 : 1a4, 2b1, 3c1, 4d1, 5e1, 6f1, 7g1
+Prueba 5 : 1a1, 2b2, 3c1, 4d1, 5e1, 6f1, 7g1
+Prueba 6 : 1a1, 2b3, 3c1, 4d1, 5e1, 6f1, 7g1
+Prueba 7 : 1a1, 2b4, 3c1, 4d1, 5e1, 6f1, 7g1
+Prueba 8 : 1a1, 2b1, 3c2, 4d1, 5e1, 6f1, 7g1
+Prueba 9 : 1a1, 2b1, 3c3, 4d1, 5e1, 6f1, 7g1
+Prueba 10 : 1a1, 2b1, 3c4, 4d1, 5e1, 6f1, 7g1
+Prueba 11 : 1a1, 2b1, 3c1, 4d2, 5e1, 6f1, 7g1
+Prueba 12 : 1a1, 2b1, 3c1, 4d3, 5e1, 6f1, 7g1
+Prueba 13 : 1a1, 2b1, 3c1, 4d4, 5e1, 6f1, 7g1
+Prueba 14 : 1a1, 2b1, 3c1, 4d1, 5e2, 6f1, 7g1
+Prueba 15 : 1a1, 2b1, 3c1, 4d1, 5e3, 6f1, 7g1
+Prueba 16 : 1a2, 2b1, 3c1, 4d1, 5e4, 6f1, 7g1
+Prueba 17 : 1a2, 2b1, 3c1, 4d1, 5e1, 6f2, 7g1
+Prueba 18 : 1a2, 2b1, 3c1, 4d1, 5e1, 6f1, 7g2
+Prueba 19 : 1a2, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3
