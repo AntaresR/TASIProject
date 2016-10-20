@@ -9,6 +9,7 @@ import org.junit.Test;
 import tasiproject.controller.AssistanceController;
 import tasiproject.models.Assistance;
 import tasiproject.models.Employee;
+import tasiproject.models.ErrorMessage;
 import tasiproject.models.Schedule;
 
 /**
@@ -33,7 +34,9 @@ public class Assistance_insert_test {
 
         assistances.add(assistance);
 
-        Assert.assertEquals(true, AssistanceController.registerAssistance(assistances).isValid());
+        ErrorMessage errorMessage = AssistanceController.registerAssistance(assistances);
+                System.out.println(errorMessage.getMessage());
+        Assert.assertEquals(true, errorMessage.isValid());
     }
 
     //Prueba  2 : 1a2, 2b1, 3c1
@@ -61,6 +64,9 @@ public class Assistance_insert_test {
         List<Assistance> assistances = new ArrayList<>();
         Assistance assistance = new Assistance();
 
+        Employee employee = new Employee();
+        assistance.setEmployee(employee);
+        
         assistance.setSchedule(null);
 
         assistances.add(assistance);
