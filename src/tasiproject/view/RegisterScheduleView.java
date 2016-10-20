@@ -8,6 +8,7 @@ package tasiproject.view;
 import java.sql.Date;
 import javax.swing.JOptionPane;
 import tasiproject.controller.ScheduleController;
+import tasiproject.models.ErrorMessage;
 import tasiproject.models.Schedule;
 
 /**
@@ -159,12 +160,13 @@ public class RegisterScheduleView extends javax.swing.JInternalFrame {
         Schedule schedule = new Schedule();
         schedule.setBeginTime(Date.valueOf(jFTFEntryTime.getText()));
         schedule.setEndTime(Date.valueOf(jFTFEntryTime.getText()));
-        schedule.setStatus(jCBStatus.getSelectedItem().toString());
-        if (ScheduleController.registerSchedule(schedule)) {
-            JOptionPane.showMessageDialog(this, "Schedule saved.");
+        schedule.setStatus(jCBStatus.getSelectedItem().toString().equals("Valid"));
+        ErrorMessage errorMessage = ScheduleController.registerSchedule(schedule);
+        if (errorMessage.isValidity()) {
+            JOptionPane.showMessageDialog(this, errorMessage.getMessage());
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "There was an error while saving to the database.");
+            JOptionPane.showMessageDialog(this, errorMessage.getMessage());
         }
     }//GEN-LAST:event_jBOkActionPerformed
 

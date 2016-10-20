@@ -9,7 +9,7 @@ public class Schedule {
     private int id;
     private Date beginTime;
     private Date endTime;
-    private String status;
+    private boolean status;
 
     /**
      * @return the id
@@ -56,14 +56,14 @@ public class Schedule {
     /**
      * @return the status
      */
-    public String getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
     /**
      * @param status the status to set
      */
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 }

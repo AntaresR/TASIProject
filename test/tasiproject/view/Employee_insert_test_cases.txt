@@ -1,5 +1,5 @@
 Black box testing
-7 entries
+10 entries
 =====================================
 private String name;
 private String lastname;

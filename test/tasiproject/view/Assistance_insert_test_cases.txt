@@ -1,0 +1,29 @@
+3 entries
+=====================================
+private Date entryTime;     //max number from 0-24, 0-60 should be controlled by code. 8 hours less than endTime
+private Date leaveTime;     //user does not input this
+private Employee employee;  //it can only have 2 values, and the spinner does not permit anything else (active=true, inactive=false)
+======================================
+1. beginTime 
+    : correct   = "10:30"                 (a1)
+      incorrect = null                    (a2)
+                  endTime + 8 <> endTime  (a3)
+
+2. endTime 
+    : correct   = "18:30" (automatic)     (b1)
+      incorrect = null                    (b2)
+                  endTime + 8 <> endTime  (b3)
+
+3. status 
+    : correct   = [active]true / [inactive]false  (c1)
+      incorrect = none
+
+===================================
+Correcta 
+Prueba 1 (correcta). 1a1, 2b1, 3c1
+
+Incorrectas
+Prueba  2 : 1a2, 2b1, 3c1
+Prueba  3 : 1a3, 2b1, 3c1
+Prueba  4 : 1a1, 2b2, 3c1
+Prueba  5 : 1a1, 2b3, 3c1
