@@ -64,7 +64,7 @@ public class TodayAssistanceTableModel implements TableModel {
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return String.class;
     }
 
     @Override

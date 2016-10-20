@@ -13,9 +13,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Register"/>
               </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Register"/>
-              </AccessibilityProperties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiRegisterEmployeeActionPerformed"/>
               </Events>
@@ -42,6 +39,21 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Assistance"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMIViewTodayAssistance">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="View Todays Assistance"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIViewTodayAssistanceActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuJustifications">
           <Properties>
             <Property name="text" type="java.lang.String" value="Justifications"/>
@@ -50,6 +62,12 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMIJustify">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Justify"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMIReviseJustification">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Revise"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
             </MenuItem>
           </SubComponents>

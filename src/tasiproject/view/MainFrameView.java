@@ -33,8 +33,11 @@ public class MainFrameView extends javax.swing.JFrame {
         jMSchedule = new javax.swing.JMenu();
         jMIRegisterSchedule = new javax.swing.JMenuItem();
         jMIAssignToEmployee = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMIViewTodayAssistance = new javax.swing.JMenuItem();
         jMenuJustifications = new javax.swing.JMenu();
         jMIJustify = new javax.swing.JMenuItem();
+        jMIReviseJustification = new javax.swing.JMenuItem();
         jMenuReport = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,7 +51,6 @@ public class MainFrameView extends javax.swing.JFrame {
             }
         });
         jMEmployee.add(jmiRegisterEmployee);
-        jmiRegisterEmployee.getAccessibleContext().setAccessibleName("Register");
 
         jMenuBar1.add(jMEmployee);
 
@@ -67,10 +69,26 @@ public class MainFrameView extends javax.swing.JFrame {
 
         jMenuBar1.add(jMSchedule);
 
+        jMenu1.setText("Assistance");
+
+        jMIViewTodayAssistance.setText("View Todays Assistance");
+        jMIViewTodayAssistance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIViewTodayAssistanceActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMIViewTodayAssistance);
+
+        jMenuBar1.add(jMenu1);
+
         jMenuJustifications.setText("Justifications");
 
         jMIJustify.setText("Justify");
         jMenuJustifications.add(jMIJustify);
+
+        jMIReviseJustification.setText("Revise");
+        jMIReviseJustification.setToolTipText("");
+        jMenuJustifications.add(jMIReviseJustification);
 
         jMenuBar1.add(jMenuJustifications);
 
@@ -104,6 +122,12 @@ public class MainFrameView extends javax.swing.JFrame {
         atev.setVisible(true);
         this.add(atev);
     }//GEN-LAST:event_jMIAssignToEmployeeActionPerformed
+
+    private void jMIViewTodayAssistanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIViewTodayAssistanceActionPerformed
+        ViewTodayEmployeeAssistance vtea = new ViewTodayEmployeeAssistance();
+        vtea.setVisible(true);
+        this.add(vtea);
+    }//GEN-LAST:event_jMIViewTodayAssistanceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,7 +170,10 @@ public class MainFrameView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMIAssignToEmployee;
     private javax.swing.JMenuItem jMIJustify;
     private javax.swing.JMenuItem jMIRegisterSchedule;
+    private javax.swing.JMenuItem jMIReviseJustification;
+    private javax.swing.JMenuItem jMIViewTodayAssistance;
     private javax.swing.JMenu jMSchedule;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuJustifications;
     private javax.swing.JMenu jMenuReport;

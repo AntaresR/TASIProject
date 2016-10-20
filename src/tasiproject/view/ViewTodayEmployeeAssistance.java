@@ -5,11 +5,14 @@
  */
 package tasiproject.view;
 
+import tasiproject.adapters.TodayAssistanceTableModel;
+
 /**
- *
  * @author paolo
  */
 public class ViewTodayEmployeeAssistance extends javax.swing.JInternalFrame {
+
+    private TodayAssistanceTableModel todayAssistanceTableModel = new TodayAssistanceTableModel();
 
     /**
      * Creates new form AssigntoEmployeeView
@@ -34,17 +37,8 @@ public class ViewTodayEmployeeAssistance extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Employees"));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Name", "Begin Time", "End Time", "Balance"
-            }
-        ));
+        jTable2.setModel(todayAssistanceTableModel
+        );
         jScrollPane2.setViewportView(jTable2);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
