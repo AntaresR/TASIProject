@@ -2,6 +2,8 @@ package tasiproject.view;
 
 import org.junit.Assert;
 import org.junit.Test;
+import tasiproject.controller.AssistanceController;
+import tasiproject.models.Assistance;
 
 /**
  * @author paolo rossi ramayoni 20105435
@@ -12,7 +14,8 @@ public class Assistance_insert_test {
     @Test
     public final void registerEmployee_correct_test() {
         //Variable initialization
+        Assistance assistance = new Assistance();
         
-        //Assert.assertEquals(true, EmployeeController.registerEmployee(employee));
+        Assert.assertEquals(true, AssistanceController.registerAssistance(assistance).isValid());
     }
 }

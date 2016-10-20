@@ -9,29 +9,29 @@ package tasiproject.models;
  * @author paolo
  */
 public class ErrorMessage {
-    private boolean validity;
+    private boolean valid;
     private String message;
     
     public ErrorMessage(){
     }
 
     public ErrorMessage(boolean validity, String message) {
-        this.validity = validity;
+        this.valid = validity;
         this.message = message;
     }
 
     /**
-     * @return the validity
+     * @return the valid
      */
-    public boolean isValidity() {
-        return validity;
+    public boolean isValid() {
+        return valid;
     }
 
     /**
-     * @param validity the validity to set
+     * @param validity the valid to set
      */
-    public void setValidity(boolean validity) {
-        this.validity = validity;
+    public void setValid(boolean validity) {
+        this.valid = validity;
     }
 
     /**

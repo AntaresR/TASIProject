@@ -16,14 +16,14 @@ import tasiproject.models.Schedule;
 /**
  * @author paolo
  */
-public class ViewTodayEmployeeAssistance extends javax.swing.JInternalFrame {
+public class TodayEmployeeAssistanceView extends javax.swing.JInternalFrame {
 
     private TodayAssistanceTableModel todayAssistanceTableModel = new TodayAssistanceTableModel();
 
     /**
      * Creates new form AssigntoEmployeeView
      */
-    public ViewTodayEmployeeAssistance() {
+    public TodayEmployeeAssistanceView() {
         initComponents();
         List<Assistance> assistances = new ArrayList<>();
         //TODO only for testing

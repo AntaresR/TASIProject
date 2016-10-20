@@ -168,13 +168,11 @@ public class RegisterScheduleView extends javax.swing.JInternalFrame {
             Logger.getLogger(RegisterScheduleView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        schedule.setStatus(jCBStatus.getSelectedItem().toString().equals("Valid"));
+        schedule.setStatus(jCBStatus.getSelectedItem().toString().equals("Valido"));
         ErrorMessage errorMessage = ScheduleController.registerSchedule(schedule);
-        if (errorMessage.isValidity()) {
-            JOptionPane.showMessageDialog(this, errorMessage.getMessage());
+        JOptionPane.showMessageDialog(this, errorMessage.getMessage());
+        if (errorMessage.isValid()) {
             this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, errorMessage.getMessage());
         }
     }//GEN-LAST:event_jBOkActionPerformed
 

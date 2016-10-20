@@ -129,7 +129,7 @@ public class MainFrameView extends javax.swing.JFrame {
     }//GEN-LAST:event_jMIAssignToEmployeeActionPerformed
 
     private void jMIViewTodayAssistanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIViewTodayAssistanceActionPerformed
-        ViewTodayEmployeeAssistance vtea = new ViewTodayEmployeeAssistance();
+        TodayEmployeeAssistanceView vtea = new TodayEmployeeAssistanceView();
         vtea.setVisible(true);
         this.add(vtea);
     }//GEN-LAST:event_jMIViewTodayAssistanceActionPerformed

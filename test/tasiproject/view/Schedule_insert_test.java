@@ -28,7 +28,7 @@ public class Schedule_insert_test {
             Logger.getLogger(Schedule_insert_test.class.getName()).log(Level.SEVERE, null, ex);
         }
         //System.out.println(ScheduleController.registerSchedule(schedule).getMessage());
-        Assert.assertEquals(true, ScheduleController.registerSchedule(schedule).isValidity());
+        Assert.assertEquals(true, ScheduleController.registerSchedule(schedule).isValid());
     }
 
     //Prueba  2 : 1a2, 2b1, 3c1
@@ -44,7 +44,7 @@ public class Schedule_insert_test {
         } catch (ParseException ex) {
             Logger.getLogger(Schedule_insert_test.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Assert.assertEquals(false, ScheduleController.registerSchedule(schedule).isValidity());
+        Assert.assertEquals(false, ScheduleController.registerSchedule(schedule).isValid());
     }
 
     //Prueba  3 : 1a3, 2b1, 3c1
@@ -60,7 +60,7 @@ public class Schedule_insert_test {
         } catch (ParseException ex) {
             Logger.getLogger(Schedule_insert_test.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Assert.assertEquals(false, ScheduleController.registerSchedule(schedule).isValidity());
+        Assert.assertEquals(false, ScheduleController.registerSchedule(schedule).isValid());
     }
 
     //Prueba  4 : 1a1, 2b2, 3c1
@@ -76,6 +76,6 @@ public class Schedule_insert_test {
         } catch (ParseException ex) {
             Logger.getLogger(Schedule_insert_test.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Assert.assertEquals(false, ScheduleController.registerSchedule(schedule).isValidity());
+        Assert.assertEquals(false, ScheduleController.registerSchedule(schedule).isValid());
     }
 }

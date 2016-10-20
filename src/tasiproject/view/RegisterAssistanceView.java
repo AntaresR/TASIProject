@@ -7,21 +7,24 @@ package tasiproject.view;
 
 import java.sql.Date;
 import javax.swing.JOptionPane;
+import tasiproject.controller.AssistanceController;
 import tasiproject.controller.EmployController;
 import tasiproject.controller.EmployeeController;
+import tasiproject.models.Assistance;
 import tasiproject.models.Employee;
 import tasiproject.models.ErrorMessage;
+import tasiproject.models.Schedule;
 
 /**
  *
  * @author paolo
  */
-public class RegisterEmployeeView extends javax.swing.JInternalFrame {
+public class RegisterAssistanceView extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form RegisterEmployee
      */
-    public RegisterEmployeeView() {
+    public RegisterAssistanceView() {
         initComponents();
     }
 
@@ -56,8 +59,8 @@ public class RegisterEmployeeView extends javax.swing.JInternalFrame {
         jTAAdress = new javax.swing.JTextArea();
         jCBPosition = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        jSpBirthday = new javax.swing.JSpinner();
-        jSpDateOfJoining = new javax.swing.JSpinner();
+        jFTFBirthday = new javax.swing.JFormattedTextField();
+        jFTFDateOfJoining = new javax.swing.JFormattedTextField();
         jBCancel = new javax.swing.JButton();
         jBOk = new javax.swing.JButton();
 
@@ -96,9 +99,9 @@ public class RegisterEmployeeView extends javax.swing.JInternalFrame {
 
         jLabel10.setText("Birthday");
 
-        jSpBirthday.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(), new java.util.Date(632860380000L), new java.util.Date(), java.util.Calendar.YEAR));
+        jFTFBirthday.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
-        jSpDateOfJoining.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(), new java.util.Date(632860380000L), new java.util.Date(), java.util.Calendar.YEAR));
+        jFTFDateOfJoining.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -111,7 +114,7 @@ public class RegisterEmployeeView extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
-                        .addGap(29, 29, 29)
+                        .addGap(69, 69, 69)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTFIdentityDocument)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
@@ -123,37 +126,30 @@ public class RegisterEmployeeView extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTFLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                            .addComponent(jTFLastnameM, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTFName, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(jTFName, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTFLastnameM, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel7))
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCBPosition, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jFTFDateOfJoining)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel5)
                             .addComponent(jLabel9)
                             .addComponent(jLabel10))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTFEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                                    .addComponent(jTFTelephone, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(108, 108, 108)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSpBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTFSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jCBPosition, 0, 174, Short.MAX_VALUE)
-                            .addComponent(jSpDateOfJoining, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))))
+                            .addComponent(jTFSalary)
+                            .addComponent(jTFTelephone)
+                            .addComponent(jTFEmail)
+                            .addComponent(jFTFBirthday, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -181,26 +177,31 @@ public class RegisterEmployeeView extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3)
                             .addComponent(jTFIdentityDocument, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)
-                            .addComponent(jSpDateOfJoining, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jFTFDateOfJoining, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jTFSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel9))
                                 .addGap(20, 20, 20)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel10)
-                                    .addComponent(jSpBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jFTFBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(24, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jTFTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
                         .addComponent(jTFEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jCBPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addComponent(jCBPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         jBCancel.setText("Cancel");
@@ -248,19 +249,20 @@ public class RegisterEmployeeView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOkActionPerformed
-        Employee employee = new Employee();
-        employee.setAdress(jTAAdress.getText());
-        employee.setBirthday((Date)jSpDateOfJoining.getValue());
-        employee.setCellphone(jTFTelephone.getText());
-        employee.setCost(Double.parseDouble(jTFSalary.getText()));
-        employee.setDni(jTFIdentityDocument.getText());
-        employee.setEmploy(EmployController.getEmployByName(jCBPosition.getItemAt(jCBPosition.getSelectedIndex())));
-        employee.setEntryDate((Date)jSpBirthday.getValue());
-        employee.setLastname(jTFLastName.getText());
-        employee.setMaternalLastName(jTFLastnameM.getText());
-        employee.setName(jTFName.getText());
+        Assistance assistance = new Assistance();
 
-        ErrorMessage errorMessage= EmployeeController.registerEmployee(employee);
+        //we simply create the employee with the employeeId that we need
+        Employee employee = new Employee();
+
+        //we create both schedules with time
+        Schedule schedule = new Schedule();
+
+        
+        assistance.setEmployee(employee);
+        assistance.setSchedule(schedule);
+        assistance.setBalance(0);
+
+        ErrorMessage errorMessage = AssistanceController.registerAssistance(assistance);
         JOptionPane.showMessageDialog(this, errorMessage.getMessage());
         if (errorMessage.isValid()) {
             this.dispose();
@@ -268,7 +270,7 @@ public class RegisterEmployeeView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBOkActionPerformed
 
     private void jBCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jBCancelActionPerformed
 
 
@@ -276,6 +278,8 @@ public class RegisterEmployeeView extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBCancel;
     private javax.swing.JButton jBOk;
     private javax.swing.JComboBox<String> jCBPosition;
+    private javax.swing.JFormattedTextField jFTFBirthday;
+    private javax.swing.JFormattedTextField jFTFDateOfJoining;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -288,8 +292,6 @@ public class RegisterEmployeeView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpBirthday;
-    private javax.swing.JSpinner jSpDateOfJoining;
     private javax.swing.JTextArea jTAAdress;
     private javax.swing.JTextField jTFEmail;
     private javax.swing.JTextField jTFIdentityDocument;

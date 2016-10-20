@@ -10,7 +10,7 @@ public class ScheduleController {
 
     public static ErrorMessage registerSchedule(Schedule schedule) {
         ErrorMessage correct = new ErrorMessage();
-        correct.setValidity(false);
+        correct.setValid(false);
     
         if (schedule.getBeginTime() == null) {
             correct.setMessage("La hora de inicio no puede ser nula.");
@@ -29,7 +29,7 @@ public class ScheduleController {
             return correct;
         }
 
-        correct.setValidity(true);
+        correct.setValid(true);
         correct.setMessage("Horario registrado.");
         return correct;
     }
