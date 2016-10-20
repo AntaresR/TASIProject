@@ -24,7 +24,7 @@ import tasiproject.models.Schedule;
  */
 public class RegisterAssistanceView extends javax.swing.JInternalFrame {
 
-    RegisterAssistanceTableModel registerAssistanceTableModel = new RegisterAssistanceTableModel();
+    RegisterAssistanceTableModel registerAssistanceTableModel = new RegisterAssistanceTableModel(1);
     private int currentEmployeeInModification;
 
     /**
@@ -42,17 +42,23 @@ public class RegisterAssistanceView extends javax.swing.JInternalFrame {
         Employee employee = new Employee();
         employee.setName("paolo");
         assistance.setEmployee(employee);
-
         Schedule schedule = new Schedule();
         schedule.setBeginTime(new Date());
         assistance.setSchedule(schedule);
+        employeeAssistance.add(assistance);
 
+        assistance = new Assistance();
+        employee = new Employee();
+        employee.setName("SERGIO");
+        assistance.setEmployee(employee);
+        schedule = new Schedule();
+        schedule.setBeginTime(new Date());
+        assistance.setSchedule(schedule);
         employeeAssistance.add(assistance);
 
         registerAssistanceTableModel.loadData(employeeAssistance);
 
         jLCurrentDay.setText("" + new Date());
-
     }
 
     /**
@@ -228,14 +234,13 @@ public class RegisterAssistanceView extends javax.swing.JInternalFrame {
             assistance.setBalance(Integer.parseInt(jTFBalance.getText()));
             assistance.getSchedule().setBeginTime(new SimpleDateFormat("HH:mm:ss").parse(
                     jSpEntryTimeHour.getValue() + ":" + jSpEntryTimeMinute.getValue() + ":00"));
-            assistance.getSchedule().setBeginTime(new SimpleDateFormat("HH:mm:ss").parse(
+            assistance.getSchedule().setEndTime(new SimpleDateFormat("HH:mm:ss").parse(
                     jSpEndTimeHour.getValue() + ":" + jSpEndTimeMinute.getValue() + ":00"));
 
-            registerAssistanceTableModel.findAndReplace(assistance);
+            registerAssistanceTableModel.findAndReplace(assistance, currentEmployeeInModification);
         } catch (ParseException ex) {
             Logger.getLogger(RegisterAssistanceView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         resetValues();
     }//GEN-LAST:event_jBSaveActionPerformed
 
@@ -285,6 +290,9 @@ public class RegisterAssistanceView extends javax.swing.JInternalFrame {
                     jSpEndTimeHour.setValue(assistance.getSchedule().getEndTime().getHours());
                     jSpEndTimeMinute.setValue(assistance.getSchedule().getEndTime().getMinutes());
                     count++;
+                } else {
+                    jSpEndTimeHour.setValue(0);
+                    jSpEndTimeMinute.setValue(0);
                 }
 
                 if (count == 2) {

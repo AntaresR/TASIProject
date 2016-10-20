@@ -4,32 +4,29 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.event.TableModelListener;
-import javax.swing.table.TableModel;
+import javax.swing.table.DefaultTableModel;
 import tasiproject.models.Assistance;
 
 /**
  * @author paolo
  */
-public class RegisterAssistanceTableModel implements TableModel {
+public class RegisterAssistanceTableModel extends DefaultTableModel {
 
     List<Assistance> employeesAssistance = new ArrayList<>();
     String[] columnNames = new String[]{"Name", "Begin Date", "End Date", "Balance"};
 
-    public void loadData(List<Assistance> todaysEmployeesAssistance) {
-        employeesAssistance = todaysEmployeesAssistance;
+    public RegisterAssistanceTableModel(int i) {
+        employeesAssistance.add(new Assistance());
     }
 
-    public void findAndReplace(Assistance assistance) {
-        for (int i = 0; i < employeesAssistance.size(); i++) {
-            if (employeesAssistance.get(i).getEmployee().getName().
-                    equals(assistance.getEmployee().getName())) {
-                setValueAt(assistance.getEmployee().getName(), i, 0);
-                setValueAt(assistance.getSchedule().getBeginTime(), i, 1);
-                setValueAt(assistance.getSchedule().getEndTime(), i, 2);
-                setValueAt(assistance.getBalance(), i, 3);
-                break;
-            }
-        }
+    public void loadData(List<Assistance> todaysEmployeesAssistance) {
+        employeesAssistance = todaysEmployeesAssistance;
+        this.fireTableDataChanged();
+    }
+
+    public void findAndReplace(Assistance assistance, int location) {
+                employeesAssistance.set(location, assistance);
+                this.fireTableDataChanged();
     }
 
     public Assistance getData(int selectedRow) {
@@ -42,7 +39,7 @@ public class RegisterAssistanceTableModel implements TableModel {
 
     @Override
     public int getRowCount() {
-        return employeesAssistance.size();
+        return employeesAssistance == null ? 0 : employeesAssistance.size();
     }
 
     @Override
