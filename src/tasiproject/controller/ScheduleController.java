@@ -24,7 +24,7 @@ public class ScheduleController {
         int initialTime = schedule.getBeginTime().getHours() * 60 + schedule.getBeginTime().getMinutes();
         int endTime = schedule.getEndTime().getHours() * 60 + schedule.getEndTime().getMinutes();
 
-        if ((initialTime + 8) != endTime) {
+        if ((initialTime + 8*60) != endTime) {
             correct.setMessage("El horario debe respetar el formato de 8h.");
             return correct;
         }

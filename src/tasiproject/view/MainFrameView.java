@@ -57,6 +57,11 @@ public class MainFrameView extends javax.swing.JFrame {
         jMSchedule.setText("Schedules");
 
         jMIRegisterSchedule.setText("Register");
+        jMIRegisterSchedule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIRegisterScheduleActionPerformed(evt);
+            }
+        });
         jMSchedule.add(jMIRegisterSchedule);
 
         jMIAssignToEmployee.setText("Assign to Employee");
@@ -128,6 +133,12 @@ public class MainFrameView extends javax.swing.JFrame {
         vtea.setVisible(true);
         this.add(vtea);
     }//GEN-LAST:event_jMIViewTodayAssistanceActionPerformed
+
+    private void jMIRegisterScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIRegisterScheduleActionPerformed
+        RegisterScheduleView rsv = new RegisterScheduleView();
+        rsv.setVisible(true);
+        this.add(rsv);
+    }//GEN-LAST:event_jMIRegisterScheduleActionPerformed
 
     /**
      * @param args the command line arguments

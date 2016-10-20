@@ -1,18 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tasiproject.view;
 
-import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import tasiproject.controller.ScheduleController;
 import tasiproject.models.ErrorMessage;
 import tasiproject.models.Schedule;
 
 /**
- *
  * @author paolo
  */
 public class RegisterScheduleView extends javax.swing.JInternalFrame {
@@ -34,14 +31,14 @@ public class RegisterScheduleView extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jlname = new javax.swing.JLabel();
-        jTFName = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jCBStatus = new javax.swing.JComboBox<>();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jFTFEntryTime = new javax.swing.JFormattedTextField();
+        jSpEntryTimeHourBegin = new javax.swing.JSpinner();
+        jSpEntryTimeMinuteBegin = new javax.swing.JSpinner();
+        jSpEntryTimeMinuteEnd = new javax.swing.JSpinner();
+        jSpEntryTimeHourEnd = new javax.swing.JSpinner();
         jBCancel = new javax.swing.JButton();
         jBOk = new javax.swing.JButton();
 
@@ -53,19 +50,21 @@ public class RegisterScheduleView extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("New"));
 
-        jlname.setText("Name");
-
         jLabel1.setText("Entry Time");
 
         jLabel6.setText("Leave Time");
 
         jLabel7.setText("Status");
 
-        jCBStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCBStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Valido", "Invalido" }));
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance())));
+        jSpEntryTimeHourBegin.setModel(new javax.swing.SpinnerNumberModel(0, 0, 23, 1));
 
-        jFTFEntryTime.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance())));
+        jSpEntryTimeMinuteBegin.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 1));
+
+        jSpEntryTimeMinuteEnd.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 1));
+
+        jSpEntryTimeHourEnd.setModel(new javax.swing.SpinnerNumberModel(0, 0, 23, 1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -74,38 +73,40 @@ public class RegisterScheduleView extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlname, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTFName, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                    .addComponent(jFTFEntryTime))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
-                .addGap(60, 60, 60)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jFormattedTextField1)
-                    .addComponent(jCBStatus, 0, 174, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSpEntryTimeHourBegin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jSpEntryTimeMinuteBegin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                        .addComponent(jCBStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addGap(97, 97, 97)
+                .addComponent(jSpEntryTimeHourEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSpEntryTimeMinuteEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlname, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jSpEntryTimeHourBegin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpEntryTimeMinuteBegin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(jSpEntryTimeHourEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpEntryTimeMinuteEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jCBStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel6)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFTFEntryTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jBCancel.setText("Cancel");
@@ -153,13 +154,20 @@ public class RegisterScheduleView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jBCancelActionPerformed
 
     private void jBOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOkActionPerformed
         Schedule schedule = new Schedule();
-        schedule.setBeginTime(Date.valueOf(jFTFEntryTime.getText()));
-        schedule.setEndTime(Date.valueOf(jFTFEntryTime.getText()));
+        try {
+            schedule.setBeginTime(new SimpleDateFormat("HH:mm:ss").parse(jSpEntryTimeHourBegin.getValue()
+                    + ":" + jSpEntryTimeMinuteBegin.getValue() + ":00"));
+            schedule.setEndTime(new SimpleDateFormat("HH:mm:ss").parse(jSpEntryTimeHourEnd.getValue()
+                    + ":" + jSpEntryTimeMinuteEnd.getValue() + ":00"));
+        } catch (ParseException ex) {
+            Logger.getLogger(RegisterScheduleView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         schedule.setStatus(jCBStatus.getSelectedItem().toString().equals("Valid"));
         ErrorMessage errorMessage = ScheduleController.registerSchedule(schedule);
         if (errorMessage.isValidity()) {
@@ -175,13 +183,13 @@ public class RegisterScheduleView extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBCancel;
     private javax.swing.JButton jBOk;
     private javax.swing.JComboBox<String> jCBStatus;
-    private javax.swing.JFormattedTextField jFTFEntryTime;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTFName;
-    private javax.swing.JLabel jlname;
+    private javax.swing.JSpinner jSpEntryTimeHourBegin;
+    private javax.swing.JSpinner jSpEntryTimeHourEnd;
+    private javax.swing.JSpinner jSpEntryTimeMinuteBegin;
+    private javax.swing.JSpinner jSpEntryTimeMinuteEnd;
     // End of variables declaration//GEN-END:variables
 }

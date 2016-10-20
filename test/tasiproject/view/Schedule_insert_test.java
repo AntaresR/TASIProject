@@ -27,6 +27,7 @@ public class Schedule_insert_test {
         } catch (ParseException ex) {
             Logger.getLogger(Schedule_insert_test.class.getName()).log(Level.SEVERE, null, ex);
         }
+        //System.out.println(ScheduleController.registerSchedule(schedule).getMessage());
         Assert.assertEquals(true, ScheduleController.registerSchedule(schedule).isValidity());
     }
 
