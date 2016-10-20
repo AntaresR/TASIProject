@@ -19,6 +19,10 @@ public class TodayAssistanceTableModel implements TableModel {
     List<Assistance> employeesAssistance = new ArrayList<>();
     String[] columnNames = new String[]{"Name", "Begin Date", "End Date", "Balance"};
 
+    public void loadData(List<Assistance> todaysEmployeesAssistance) {
+        employeesAssistance = todaysEmployeesAssistance;
+    }
+
     @Override
     public int getRowCount() {
         return employeesAssistance.size();
@@ -69,12 +73,12 @@ public class TodayAssistanceTableModel implements TableModel {
 
     @Override
     public void addTableModelListener(TableModelListener l) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void removeTableModelListener(TableModelListener l) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

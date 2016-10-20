@@ -5,7 +5,13 @@
  */
 package tasiproject.view;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import tasiproject.adapters.TodayAssistanceTableModel;
+import tasiproject.models.Assistance;
+import tasiproject.models.Employee;
+import tasiproject.models.Schedule;
 
 /**
  * @author paolo
@@ -19,6 +25,29 @@ public class ViewTodayEmployeeAssistance extends javax.swing.JInternalFrame {
      */
     public ViewTodayEmployeeAssistance() {
         initComponents();
+        List<Assistance> assistances = new ArrayList<>();
+        //TODO only for testing
+        Assistance assistance = new Assistance();
+        
+        Employee employee = new Employee();
+        employee.setName("Picho");
+        
+        Schedule schedule = new Schedule();
+        schedule.setBeginTime(new Date());
+        schedule.setEndTime(new Date());
+        
+        assistance.setBalance(0);
+        assistance.setEmployee(employee);
+        assistance.setSchedule(schedule);
+        assistances.add(assistance);
+
+        assistance = new Assistance();
+        assistance.setBalance(0);
+        assistance.setEmployee(employee);
+        assistance.setSchedule(schedule);
+        assistances.add(assistance);
+
+        todayAssistanceTableModel.loadData(assistances);
     }
 
     /**
@@ -96,7 +125,6 @@ public class ViewTodayEmployeeAssistance extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBCloseActionPerformed
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBClose;
