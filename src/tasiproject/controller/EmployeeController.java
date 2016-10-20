@@ -71,6 +71,7 @@ public class EmployeeController {
         }
 
         //TODO Employ
+        if (employee.getEmploy()== null) {return correct;}
 
         // Begin date
         if (employee.getEntryDate() == null) {
@@ -78,7 +79,7 @@ public class EmployeeController {
         }
 
         // Salary
-        if (employee.getCost() > 10000) {
+        if (employee.getCost() > 1000000) {
             return correct;
         }
 
@@ -87,18 +88,14 @@ public class EmployeeController {
         }
 
         // Address
-        if (employee.getBirthday() == null) {
+        if (employee.getAdress()== null) {
             return correct;
         }
 
-        if (employee.getDni().equals("")) {
+        if (employee.getAdress().equals("")) {
             return correct;
         }
-
-        if (employee.getDni().matches(".*\\d+.*")) { //if is just numbers
-            return correct;
-        }
-
+        
         // Birthday
         if (employee.getBirthday() == null) {
             return correct;

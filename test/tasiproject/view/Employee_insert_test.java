@@ -27,16 +27,16 @@ public class Employee_insert_test {
         employee.setMaternalLastName("lastnameM");
         employee.setCost(10121);
         employee.setEntryDate(new Date());
-        employee.setDni("java");
+        employee.setDni("1223444");
         employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
         employee.setBirthday(new Date());
-        employee.setCellphone("950078142");
+        employee.setCellphone("9508142");
  
         //TODO for now is empty 
         Employ employ = new Employ();
         employee.setEmploy(employ);
         
-        Assert.assertEquals(EmployeeController.registerEmployee(employee), true);
+        Assert.assertEquals(true, EmployeeController.registerEmployee(employee));
     }
 
     //Prueba 2 : 1a2, 2b1, 3c1, 4d1, 5e1, 6f1, 7g1
@@ -49,7 +49,7 @@ public class Employee_insert_test {
         employee.setMaternalLastName("lastnameM");
         employee.setCost(10121);
         employee.setEntryDate(new Date());
-        employee.setDni("java");
+        employee.setDni("1223444");
         employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
         employee.setBirthday(new Date());
         employee.setCellphone("950078142");
@@ -58,7 +58,7 @@ public class Employee_insert_test {
         Employ employ = new Employ();
         employee.setEmploy(employ);
         
-        Assert.assertEquals(EmployeeController.registerEmployee(employee), true);
+        Assert.assertEquals(EmployeeController.registerEmployee(employee), false);
     }
 
     //Prueba 3 : 1a3, 2b1, 3c1, 4d1, 5e1, 6f1, 7g1
@@ -71,7 +71,7 @@ public class Employee_insert_test {
         employee.setMaternalLastName("lastnameM");
         employee.setCost(10121);
         employee.setEntryDate(new Date());
-        employee.setDni("java");
+        employee.setDni("1223444");
         employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
         employee.setBirthday(new Date());
         employee.setCellphone("950078142"); 
@@ -92,7 +92,7 @@ public class Employee_insert_test {
         employee.setMaternalLastName("lastnameM");
         employee.setCost(10121);
         employee.setEntryDate(new Date());
-        employee.setDni("java");
+        employee.setDni("1223444");
         employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
         employee.setBirthday(new Date());
         employee.setCellphone("950078142"); 
@@ -113,7 +113,7 @@ public class Employee_insert_test {
         employee.setMaternalLastName("lastnameM");
         employee.setCost(10121);
         employee.setEntryDate(new Date());
-        employee.setDni("java");
+        employee.setDni("1223444");
         
         employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
         employee.setBirthday(new Date());
@@ -135,7 +135,7 @@ public class Employee_insert_test {
         employee.setMaternalLastName("lastnameM");
         employee.setCost(10121);
         employee.setEntryDate(new Date());
-        employee.setDni("java");
+        employee.setDni("1223444");
         
         employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
         employee.setBirthday(new Date());
@@ -157,7 +157,7 @@ public class Employee_insert_test {
         employee.setMaternalLastName("lastnameM");
         employee.setCost(10121);
         employee.setEntryDate(new Date());
-        employee.setDni("java");
+        employee.setDni("1223444");
         
         employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
         employee.setBirthday(new Date());
@@ -179,7 +179,7 @@ public class Employee_insert_test {
         employee.setMaternalLastName("");
         employee.setCost(10121);
         employee.setEntryDate(new Date());
-        employee.setDni("java");
+        employee.setDni("1223444");
 
         employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
         employee.setBirthday(new Date());
@@ -201,7 +201,7 @@ public class Employee_insert_test {
         employee.setMaternalLastName("lastnameM");
         employee.setCost(10121);
         employee.setEntryDate(new Date());
-        employee.setDni("java");
+        employee.setDni("1223444");
         
         employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
         employee.setBirthday(new Date());
@@ -223,7 +223,7 @@ public class Employee_insert_test {
         employee.setMaternalLastName(null);
         employee.setCost(10121);
         employee.setEntryDate(new Date());
-        employee.setDni("java");
+        employee.setDni("1223444");
         
         employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
         employee.setBirthday(new Date());
@@ -267,7 +267,7 @@ public class Employee_insert_test {
         employee.setMaternalLastName("paolo");
         employee.setCost(10121);
         employee.setEntryDate(new Date());
-        employee.setDni("no hay doc 1");
+        employee.setDni("no hay doc");
         
         employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
         employee.setBirthday(new Date());
@@ -354,7 +354,7 @@ public class Employee_insert_test {
         employee.setMaternalLastName("lastnameM");
         employee.setCost(1012100000);
         employee.setEntryDate(new Date());
-        employee.setDni("java");
+        employee.setDni("1223444");
         employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
         employee.setBirthday(new Date());
         employee.setCellphone("950078142");
@@ -376,7 +376,7 @@ public class Employee_insert_test {
         employee.setMaternalLastName("lastnameM");
         employee.setCost(-1000);
         employee.setEntryDate(new Date());
-        employee.setDni("java");
+        employee.setDni("1223444");
         employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
         employee.setBirthday(new Date());
         employee.setCellphone("950078142");
@@ -398,7 +398,7 @@ public class Employee_insert_test {
         employee.setMaternalLastName("lastnameM");
         employee.setCost(10121);
         employee.setEntryDate(new Date());
-        employee.setDni("java");
+        employee.setDni("1223444");
         employee.setAdress("");
         employee.setBirthday(new Date());
         employee.setCellphone("950078142");
@@ -420,7 +420,7 @@ public class Employee_insert_test {
         employee.setMaternalLastName("lastnameM");
         employee.setCost(10121);
         employee.setEntryDate(new Date());
-        employee.setDni("java");
+        employee.setDni("1223444");
         employee.setAdress(null);
         employee.setBirthday(new Date());
         employee.setCellphone("950078142");
@@ -442,7 +442,7 @@ public class Employee_insert_test {
         employee.setMaternalLastName("lastnameM");
         employee.setCost(10121);
         employee.setEntryDate(new Date());
-        employee.setDni("java");
+        employee.setDni("1223444");
         employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
         employee.setBirthday(null);
         employee.setCellphone("950078142");
@@ -464,7 +464,7 @@ public class Employee_insert_test {
         employee.setMaternalLastName("lastnameM");
         employee.setCost(10121);
         employee.setEntryDate(new Date());
-        employee.setDni("java");
+        employee.setDni("1223444");
         employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
         employee.setBirthday(new Date());
         employee.setCellphone("");
@@ -486,7 +486,7 @@ public class Employee_insert_test {
         employee.setMaternalLastName("lastnameM");
         employee.setCost(10121);
         employee.setEntryDate(new Date());
-        employee.setDni("java");
+        employee.setDni("1223444");
         employee.setAdress("Calle El Caserio Mz. F1 Lote 4");
         employee.setBirthday(new Date());
         employee.setCellphone(null);
