@@ -42,7 +42,7 @@ public class Employee_insert_test {
     //Prueba 2 : 1a2, 2b1, 3c1, 4d1, 5e1, 6f1, 7g1
     @Test
     public final void registerEmployee_empty_name_test() {
-        //Variable initialization
+        //Variable iniialization
         Employee employee = new Employee();
         employee.setName("");
         employee.setLastname("lastname");
