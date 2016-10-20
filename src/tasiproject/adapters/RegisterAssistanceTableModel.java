@@ -19,6 +19,27 @@ public class RegisterAssistanceTableModel implements TableModel {
         employeesAssistance = todaysEmployeesAssistance;
     }
 
+    public void findAndReplace(Assistance assistance) {
+        for (int i = 0; i < employeesAssistance.size(); i++) {
+            if (employeesAssistance.get(i).getEmployee().getName().
+                    equals(assistance.getEmployee().getName())) {
+                setValueAt(assistance.getEmployee().getName(), i, 0);
+                setValueAt(assistance.getSchedule().getBeginTime(), i, 1);
+                setValueAt(assistance.getSchedule().getEndTime(), i, 2);
+                setValueAt(assistance.getBalance(), i, 3);
+                break;
+            }
+        }
+    }
+
+    public Assistance getData(int selectedRow) {
+        return employeesAssistance.get(selectedRow);
+    }
+
+    public List<Assistance> getData() {
+        return employeesAssistance;
+    }
+
     @Override
     public int getRowCount() {
         return employeesAssistance.size();
@@ -64,10 +85,10 @@ public class RegisterAssistanceTableModel implements TableModel {
                         + employeesAssistance.get(rowIndex).getEmployee().getMaternalLastName();
             case 1:
                 return employeesAssistance.get(rowIndex).getSchedule().getBeginTime() == null
-                        ? "Not yet registered" : ""+employeesAssistance.get(rowIndex).getSchedule().getBeginTime();
+                        ? "Not yet registered" : "" + employeesAssistance.get(rowIndex).getSchedule().getBeginTime();
             case 2:
                 return employeesAssistance.get(rowIndex).getSchedule().getEndTime() == null
-                        ? "Not yet registered" : ""+employeesAssistance.get(rowIndex).getSchedule().getEndTime();
+                        ? "Not yet registered" : "" + employeesAssistance.get(rowIndex).getSchedule().getEndTime();
             case 3:
                 return employeesAssistance.get(rowIndex).getBalance();
             default:
@@ -77,10 +98,20 @@ public class RegisterAssistanceTableModel implements TableModel {
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        employeesAssistance.get(rowIndex).getEmployee().setName((String) aValue);
-        employeesAssistance.get(rowIndex).getSchedule().setBeginTime((Date) aValue);
-        employeesAssistance.get(rowIndex).getSchedule().setEndTime((Date) aValue);
-        employeesAssistance.get(rowIndex).setBalance((double) aValue);
+        switch (columnIndex) {
+            case 0:
+                employeesAssistance.get(rowIndex).getEmployee().setName((String) aValue);
+                break;
+            case 1:
+                employeesAssistance.get(rowIndex).getSchedule().setBeginTime((Date) aValue);
+                break;
+            case 2:
+                employeesAssistance.get(rowIndex).getSchedule().setEndTime((Date) aValue);
+                break;
+            case 3:
+                employeesAssistance.get(rowIndex).setBalance((double) aValue);
+                break;
+        }
     }
 
     @Override
@@ -89,22 +120,5 @@ public class RegisterAssistanceTableModel implements TableModel {
 
     @Override
     public void removeTableModelListener(TableModelListener l) {
-    }
-
-    public void findAndReplace(Assistance assistance) {
-        for (int i = 0; i < employeesAssistance.size(); i++) {
-            if (employeesAssistance.get(i).getEmployee().getName().
-                    equals(assistance.getEmployee().getName())) {
-                setValueAt(assistance.getEmployee().getName(), i, 0);
-                setValueAt(assistance.getSchedule().getBeginTime(), i, 1);
-                setValueAt(assistance.getSchedule().getEndTime(), i, 2);
-                setValueAt(assistance.getBalance(), i, 3);
-                break;
-            }
-        }
-    }
-
-    public Assistance getData(int selectedRow) {
-        return employeesAssistance.get(selectedRow);
     }
 }

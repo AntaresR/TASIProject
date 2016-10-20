@@ -1,9 +1,15 @@
 package tasiproject.view;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import tasiproject.adapters.RegisterAssistanceTableModel;
 import tasiproject.controller.AssistanceController;
@@ -19,6 +25,7 @@ import tasiproject.models.Schedule;
 public class RegisterAssistanceView extends javax.swing.JInternalFrame {
 
     RegisterAssistanceTableModel registerAssistanceTableModel = new RegisterAssistanceTableModel();
+    private int currentEmployeeInModification;
 
     /**
      * Creates new form RegisterEmployee
@@ -64,13 +71,14 @@ public class RegisterAssistanceView extends javax.swing.JInternalFrame {
         jTFBalance = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTAssistance = new javax.swing.JTable();
-        jBCancel = new javax.swing.JButton();
-        jBOk = new javax.swing.JButton();
+        jBSave = new javax.swing.JButton();
         jLCurrentDay = new javax.swing.JLabel();
         jSpEntryTimeMinute = new javax.swing.JSpinner();
         jSpEndTimeMinute = new javax.swing.JSpinner();
         jSpEntryTimeHour = new javax.swing.JSpinner();
         jSpEndTimeHour = new javax.swing.JSpinner();
+        jBCancel = new javax.swing.JButton();
+        jBOk = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
@@ -91,17 +99,10 @@ public class RegisterAssistanceView extends javax.swing.JInternalFrame {
         jTAssistance.setModel(registerAssistanceTableModel);
         jScrollPane2.setViewportView(jTAssistance);
 
-        jBCancel.setText("Cancel");
-        jBCancel.addActionListener(new java.awt.event.ActionListener() {
+        jBSave.setText("Save");
+        jBSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCancelActionPerformed(evt);
-            }
-        });
-
-        jBOk.setText("Ok");
-        jBOk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBOkActionPerformed(evt);
+                jBSaveActionPerformed(evt);
             }
         });
 
@@ -121,20 +122,11 @@ public class RegisterAssistanceView extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jBOk, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBCancel)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLCurrentDay, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
+                        .addComponent(jLCurrentDay, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel6)
@@ -149,13 +141,17 @@ public class RegisterAssistanceView extends javax.swing.JInternalFrame {
                                 .addComponent(jSpEndTimeHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jSpEndTimeMinute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTFBalance, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(53, 53, 53))))
+                            .addComponent(jTFBalance, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBSave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(28, Short.MAX_VALUE)
                 .addComponent(jLCurrentDay)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,12 +169,24 @@ public class RegisterAssistanceView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jTFBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBCancel)
-                    .addComponent(jBOk))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jBSave)
+                .addGap(6, 6, 6))
         );
+
+        jBCancel.setText("Cancel");
+        jBCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelActionPerformed(evt);
+            }
+        });
+
+        jBOk.setText("Ok");
+        jBOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBOkActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,51 +194,68 @@ public class RegisterAssistanceView extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBOk, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBCancel)
+                        .addGap(12, 12, 12))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBCancel)
+                    .addComponent(jBOk))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSaveActionPerformed
+        Assistance assistance = registerAssistanceTableModel.getData(currentEmployeeInModification);
+        try {
+            if (jTFBalance.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "You must modify the values first");
+                return;
+            }
+            assistance.setBalance(Integer.parseInt(jTFBalance.getText()));
+            assistance.getSchedule().setBeginTime(new SimpleDateFormat("HH:mm:ss").parse(
+                    jSpEntryTimeHour.getValue() + ":" + jSpEntryTimeMinute.getValue() + ":00"));
+            assistance.getSchedule().setBeginTime(new SimpleDateFormat("HH:mm:ss").parse(
+                    jSpEndTimeHour.getValue() + ":" + jSpEndTimeMinute.getValue() + ":00"));
+
+            registerAssistanceTableModel.findAndReplace(assistance);
+        } catch (ParseException ex) {
+            Logger.getLogger(RegisterAssistanceView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        resetValues();
+    }//GEN-LAST:event_jBSaveActionPerformed
+
+    private void jBCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jBCancelActionPerformed
+
     private void jBOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOkActionPerformed
-        Assistance assistance = new Assistance();
-
-        //we simply create the employee with the employeeId that we need
-        Employee employee = new Employee();
-
-        //we create both schedules with time
-        Schedule schedule = new Schedule();
-
-        assistance.setEmployee(employee);
-        assistance.setSchedule(schedule);
-        assistance.setBalance(0);
-
-        ErrorMessage errorMessage = AssistanceController.registerAssistance(assistance);
-
-        registerAssistanceTableModel.findAndReplace(assistance);
-
+        ErrorMessage errorMessage = AssistanceController.registerAssistance(registerAssistanceTableModel.getData());
         JOptionPane.showMessageDialog(this, errorMessage.getMessage());
         if (errorMessage.isValid()) {
             this.dispose();
         }
     }//GEN-LAST:event_jBOkActionPerformed
 
-    private void jBCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jBCancelActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCancel;
     private javax.swing.JButton jBOk;
+    private javax.swing.JButton jBSave;
     private javax.swing.JLabel jLCurrentDay;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -248,6 +273,7 @@ public class RegisterAssistanceView extends javax.swing.JInternalFrame {
     private void initActions() {
         jTAssistance.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {
             if (jTAssistance.getSelectedRow() > -1) {
+                currentEmployeeInModification = jTAssistance.getSelectedRow();
                 Assistance assistance = registerAssistanceTableModel.getData(jTAssistance.getSelectedRow());
                 int count = 0;
                 if (assistance.getSchedule().getBeginTime() != null) {
@@ -269,5 +295,26 @@ public class RegisterAssistanceView extends javax.swing.JInternalFrame {
                 }
             }
         });
+
+        ChangeListener balanceListener = (ChangeEvent e) -> {
+            int n = -(int) jSpEntryTimeHour.getValue() * 60 - (int) jSpEntryTimeMinute.getValue()
+                    + ((int) jSpEndTimeHour.getValue() * 60 + (int) jSpEndTimeMinute.getValue());
+            jTFBalance.setText("" + n);
+        };
+
+        jSpEntryTimeHour.addChangeListener(balanceListener);
+        jSpEntryTimeMinute.addChangeListener(balanceListener);
+        jSpEndTimeHour.addChangeListener(balanceListener);
+        jSpEndTimeMinute.addChangeListener(balanceListener);
+    }
+
+    private void resetValues() {
+        jSpEntryTimeHour.setValue(0);
+        jSpEntryTimeMinute.setValue(0);
+
+        jSpEndTimeHour.setValue(0);
+        jSpEndTimeMinute.setValue(0);
+
+        jTFBalance.setText("");
     }
 }
