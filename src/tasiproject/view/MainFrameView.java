@@ -34,6 +34,7 @@ public class MainFrameView extends javax.swing.JFrame {
         jMIRegisterSchedule = new javax.swing.JMenuItem();
         jMIAssignToEmployee = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
+        jMIRegisterAssistance = new javax.swing.JMenuItem();
         jMIViewTodayAssistance = new javax.swing.JMenuItem();
         jMenuJustifications = new javax.swing.JMenu();
         jMIJustify = new javax.swing.JMenuItem();
@@ -76,7 +77,15 @@ public class MainFrameView extends javax.swing.JFrame {
 
         jMenu1.setText("Assistance");
 
-        jMIViewTodayAssistance.setText("View Todays Assistance");
+        jMIRegisterAssistance.setText("Register");
+        jMIRegisterAssistance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIRegisterAssistanceActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMIRegisterAssistance);
+
+        jMIViewTodayAssistance.setText("View Todays");
         jMIViewTodayAssistance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIViewTodayAssistanceActionPerformed(evt);
@@ -106,11 +115,11 @@ public class MainFrameView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
+            .addGap(0, 942, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 438, Short.MAX_VALUE)
+            .addGap(0, 601, Short.MAX_VALUE)
         );
 
         pack();
@@ -139,6 +148,12 @@ public class MainFrameView extends javax.swing.JFrame {
         rsv.setVisible(true);
         this.add(rsv);
     }//GEN-LAST:event_jMIRegisterScheduleActionPerformed
+
+    private void jMIRegisterAssistanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIRegisterAssistanceActionPerformed
+        RegisterAssistanceView rav = new RegisterAssistanceView();
+        rav.setVisible(true);
+        this.add(rav);
+    }//GEN-LAST:event_jMIRegisterAssistanceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,6 +195,7 @@ public class MainFrameView extends javax.swing.JFrame {
     private javax.swing.JMenu jMEmployee;
     private javax.swing.JMenuItem jMIAssignToEmployee;
     private javax.swing.JMenuItem jMIJustify;
+    private javax.swing.JMenuItem jMIRegisterAssistance;
     private javax.swing.JMenuItem jMIRegisterSchedule;
     private javax.swing.JMenuItem jMIReviseJustification;
     private javax.swing.JMenuItem jMIViewTodayAssistance;
