@@ -31,17 +31,17 @@ public class RegisterAssistanceView extends javax.swing.JInternalFrame {
         //I obtain all the assistances registered in the database for today
 
         Assistance assistance = new Assistance();
-        
+
         Employee employee = new Employee();
         employee.setName("paolo");
         assistance.setEmployee(employee);
-        
+
         Schedule schedule = new Schedule();
         schedule.setBeginTime(new Date());
         assistance.setSchedule(schedule);
-        
+
         employeeAssistance.add(assistance);
-        
+
         registerAssistanceTableModel.loadData(employeeAssistance);
 
         jLCurrentDay.setText("" + new Date());
@@ -62,13 +62,15 @@ public class RegisterAssistanceView extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jTFBalance = new javax.swing.JTextField();
-        jTFEntryTime = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTAssistance = new javax.swing.JTable();
-        jTFEndTime = new javax.swing.JTextField();
         jBCancel = new javax.swing.JButton();
         jBOk = new javax.swing.JButton();
         jLCurrentDay = new javax.swing.JLabel();
+        jSpEntryTimeMinute = new javax.swing.JSpinner();
+        jSpEndTimeMinute = new javax.swing.JSpinner();
+        jSpEntryTimeHour = new javax.swing.JSpinner();
+        jSpEndTimeHour = new javax.swing.JSpinner();
 
         setClosable(true);
         setMaximizable(true);
@@ -82,6 +84,9 @@ public class RegisterAssistanceView extends javax.swing.JInternalFrame {
         jLabel6.setText("End Time");
 
         jLabel7.setText("Balance");
+
+        jTFBalance.setEnabled(false);
+        jTFBalance.setFocusable(false);
 
         jTAssistance.setModel(registerAssistanceTableModel);
         jScrollPane2.setViewportView(jTAssistance);
@@ -101,6 +106,14 @@ public class RegisterAssistanceView extends javax.swing.JInternalFrame {
         });
 
         jLCurrentDay.setText("jLabel1");
+
+        jSpEntryTimeMinute.setModel(new javax.swing.SpinnerNumberModel(0, 0, 60, 1));
+
+        jSpEndTimeMinute.setModel(new javax.swing.SpinnerNumberModel(0, 0, 60, 1));
+
+        jSpEntryTimeHour.setModel(new javax.swing.SpinnerNumberModel(0, 0, 24, 1));
+
+        jSpEndTimeHour.setModel(new javax.swing.SpinnerNumberModel(0, 0, 24, 1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -127,10 +140,16 @@ public class RegisterAssistanceView extends javax.swing.JInternalFrame {
                             .addComponent(jLabel6)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFEndTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTFEntryTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTFBalance, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jSpEntryTimeHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jSpEntryTimeMinute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jSpEndTimeHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jSpEndTimeMinute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTFBalance, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(53, 53, 53))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -143,11 +162,13 @@ public class RegisterAssistanceView extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTFEntryTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSpEntryTimeMinute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpEntryTimeHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTFEndTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSpEndTimeMinute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpEndTimeHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -216,10 +237,12 @@ public class RegisterAssistanceView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSpinner jSpEndTimeHour;
+    private javax.swing.JSpinner jSpEndTimeMinute;
+    private javax.swing.JSpinner jSpEntryTimeHour;
+    private javax.swing.JSpinner jSpEntryTimeMinute;
     private javax.swing.JTable jTAssistance;
     private javax.swing.JTextField jTFBalance;
-    private javax.swing.JTextField jTFEndTime;
-    private javax.swing.JTextField jTFEntryTime;
     // End of variables declaration//GEN-END:variables
 
     private void initActions() {
@@ -228,11 +251,13 @@ public class RegisterAssistanceView extends javax.swing.JInternalFrame {
                 Assistance assistance = registerAssistanceTableModel.getData(jTAssistance.getSelectedRow());
                 int count = 0;
                 if (assistance.getSchedule().getBeginTime() != null) {
-                    jTFEntryTime.setText("" + assistance.getSchedule().getBeginTime());
+                    jSpEntryTimeHour.setValue(assistance.getSchedule().getBeginTime().getHours());
+                    jSpEntryTimeMinute.setValue(assistance.getSchedule().getBeginTime().getMinutes());
                     count++;
                 }
                 if (assistance.getSchedule().getEndTime() != null) {
-                    jTFEndTime.setText("" + assistance.getSchedule().getEndTime());
+                    jSpEndTimeHour.setValue(assistance.getSchedule().getEndTime().getHours());
+                    jSpEndTimeMinute.setValue(assistance.getSchedule().getEndTime().getMinutes());
                     count++;
                 }
 
