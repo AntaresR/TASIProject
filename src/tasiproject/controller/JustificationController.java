@@ -15,6 +15,16 @@ import tasiproject.models.InconsistenceJustification;
  */
 public class JustificationController {
 
+    public static ErrorMessage registerJustification(InconsistenceJustification inconsistenceJustification) {
+        ErrorMessage errorMessage = new ErrorMessage();
+        errorMessage.setValid(false);
+        
+        
+
+        errorMessage.setValid(true);
+        return errorMessage;
+    }
+
     public static ErrorMessage acceptOrDenyJustification(List<InconsistenceJustification> data) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -22,5 +32,4 @@ public class JustificationController {
     public static List<InconsistenceJustification> getTodayJustifications() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }

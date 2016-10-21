@@ -166,7 +166,7 @@ public class MainFrameView extends javax.swing.JFrame {
     }//GEN-LAST:event_jMIRegisterAssistanceActionPerformed
 
     private void jMIJustifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIJustifyActionPerformed
-        JustificatyInconsistenceView jiv = new JustificatyInconsistenceView();
+        JustifyInconsistenceView jiv = new JustifyInconsistenceView();
         jiv.setVisible(true);
         this.add(jiv);
     }//GEN-LAST:event_jMIJustifyActionPerformed

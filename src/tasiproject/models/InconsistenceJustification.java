@@ -5,10 +5,10 @@ package tasiproject.models;
  */
 public class InconsistenceJustification {
     private Employee employee;
-    private String motive;
-    private String explanation;
+    private String motive;//only 3 possibilities
+    private String explanation;//text from the user, neccesary to write something
     private int type; //0: late. 1: extra hours
-    private int status;//0: not seen, 1: accepted, 2: not accepted
+    private int status;//0: not seen, 1: accepted, 2: not accepted. All begin with not seen
 
     /**
      * @return the employee
