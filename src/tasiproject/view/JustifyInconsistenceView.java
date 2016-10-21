@@ -65,7 +65,7 @@ public class JustifyInconsistenceView extends javax.swing.JInternalFrame {
         jTAJustificationExplanation.setRows(5);
         jScrollPane1.setViewportView(jTAJustificationExplanation);
 
-        jCBJustificationMotive.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por comisión de trabajo", "Por compensación de horas extras", "Sin justificación." }));
+        jCBJustificationMotive.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por comisión de trabajo", "Por compensación de horas extras", "Sin justificación" }));
 
         jCBJustificationType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Late", "Extra hours" }));
 
@@ -162,8 +162,6 @@ public class JustifyInconsistenceView extends javax.swing.JInternalFrame {
                     .addComponent(jBOk))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        getAccessibleContext().setAccessibleName("Register Justification");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

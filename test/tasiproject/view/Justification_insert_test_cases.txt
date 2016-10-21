@@ -1,92 +1,42 @@
 Paolo Rossi R. 20105435
-Black box testing
-10 entries
+5 entries
 =====================================
-private String name;
-private String lastname;
-private String maternalLastname;
-private String identityDocument;
-private String employ;
-private Date begindate;
-private double salary;
-private String address;
-private String birthday;
-private String cellphone;
+    private String motive;     //only 3 possibilities Por comisión de trabajo, por compensación de horas extras, sin justificación.
+                               //the null and empty possibilities are controlled by code
+                               //only inconsistencies will be test    
+    private String explanation;//text from the user, neccesary to write something
+                               //the null and empty possibilities are controlled by code
+    private int type;          //0: late. 1: extra hours
+    private int status;        //0: not seen, 1: accepted, 2: not accepted. All begin with not seen
+                               //cannot be 1 or 2 when on register
+    private Employee employee; //comes from the session no need to test
 ======================================
-1. name 
-    : correct   = "CNCOANCOA"  (a1)
-      incorrect = empty        (a2)
-                  1232456      (a3)
-                  null         (a4)
+1. motive
+    : correct   = any                                   (a1)
+      incorrect = por compensación de horas extras      (a2) ->type: extra hours
+                
+2. explanation
+    : correct   = "Any sentences"                       (b1)
+      incorrect = empty                                 (b2)
+                  null                                  (b3)
 
-2. lastname 
-    : correct   = "CNCOANCOA"  (b1)
-      incorrect = empty        (b2)
-                  1232456      (b3)
-                  null         (b4)
+3. type
+    : correct   = 0: late. || 1: extra hours            (c1)
+      incorrect = impossible as is controlled by code
 
-3. maternalLastname 
-    : correct   = "CNCOANCOA"  (c1)
-      incorrect = empty        (c2)
-                  1232456      (c3)
-                  null         (c4)
+4. status
+    : correct   = 0                                     (d1)
+      incorrect = <> 0                                  (d2)
 
-4. identityDocument 
-    : correct   = "11111111"   (d1)
-      incorrect = empty        (d2)
-                  alphanumerics(d3)
-                  null         (d4)
-
-5. employ
-    : correct   = objectSelect (e1)
-      incorrect = null         (e2)
-
-6. beginDate
-    : correct   = "10/10/10"   (f1)
-      incorrect = null         (f2)
-
-7. salary
-    : correct   = 12234        (g1)
-      incorrect = >100000      (g2)
-                  <0           (g3)
-
-8. address
-    : correct   = "C. Caserio" (h1)
-      incorrect = empty        (h2)
-                  null         (h3)
-
-9. birthday
-    : correct   = "10/10/10"   (i1)
-      incorrect = null         (i2)
-                  
-10. cellphone
-    : correct   = "122341233"  (j1)
-      incorrect = empty        (j2)
-                  null         (j3)
-
+5 employee
+    : correct   = instanced                             (e1)
+      incorrect = none                                  
 ===================================
 Correcta 
-Prueba 1 (correcta). 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
+Prueba 1 (correcta). 1a1, 2b1, 3c1, 4d1, 5e1
 
 Incorrectas
-Prueba  2 : 1a2, 2b1, 3c1, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
-Prueba  3 : 1a3, 2b1, 3c1, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
-Prueba  4 : 1a4, 2b1, 3c1, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
-Prueba  5 : 1a1, 2b2, 3c1, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
-Prueba  6 : 1a1, 2b3, 3c1, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
-Prueba  7 : 1a1, 2b4, 3c1, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
-Prueba  8 : 1a1, 2b1, 3c2, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
-Prueba  9 : 1a1, 2b1, 3c3, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
-Prueba 10 : 1a1, 2b1, 3c4, 4d1, 5e1, 6f1, 7g1, h1, i1, j1
-Prueba 11 : 1a1, 2b1, 3c1, 4d2, 5e1, 6f1, 7g1, h1, i1, j1
-Prueba 12 : 1a1, 2b1, 3c1, 4d3, 5e1, 6f1, 7g1, h1, i1, j1
-Prueba 13 : 1a1, 2b1, 3c1, 4d4, 5e1, 6f1, 7g1, h1, i1, j1
-Prueba 14 : 1a1, 2b1, 3c1, 4d1, 5e2, 6f1, 7g1, h1, i1, j1
-Prueba 15 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f2, 7g1, h1, i1, j1
-Prueba 16 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g2, h1, i1, j1
-Prueba 17 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i1, j1
-Prueba 18 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h2, i1, j1
-Prueba 19 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h3, i1, j1
-Prueba 20 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i2, j1
-Prueba 21 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i1, j2
-Prueba 22 : 1a1, 2b1, 3c1, 4d1, 5e1, 6f1, 7g3, h1, i1, j3
+Prueba  2 : 1a2, 2b1, 3c1, 4d1, 5e1
+Prueba  3 : 1a1, 2b2, 3c1, 4d1, 5e1
+Prueba  4 : 1a1, 2b3, 3c1, 4d1, 5e1
+Prueba  5 : 1a1, 2b1, 3c1, 4d2, 5e1
