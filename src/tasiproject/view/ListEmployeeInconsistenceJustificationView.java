@@ -1,19 +1,15 @@
 package tasiproject.view;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
-import tasiproject.adapters.RegisterAssistanceTableModel;
-import tasiproject.controller.AssistanceController;
-import tasiproject.models.Assistance;
-import tasiproject.models.Employee;
+import tasiproject.adapters.JustifyInconsistenceTableModel;
+import tasiproject.controller.JustificationController;
 import tasiproject.models.ErrorMessage;
-import tasiproject.models.Schedule;
+import tasiproject.models.InconsistenceJustification;
 
 /**
- *
  * @author paolo
  */
 public class ListEmployeeInconsistenceJustificationView extends javax.swing.JInternalFrame {
@@ -27,29 +23,9 @@ public class ListEmployeeInconsistenceJustificationView extends javax.swing.JInt
         initComponents();
         initActions();
 
-        List<Assistance> employeeAssistance = new ArrayList<>();
+        List<InconsistenceJustification> inconsistenceJustifications = JustificationController.getTodayJustifications();
         //I obtain all the assistances registered in the database for today
-
-        Assistance assistance = new Assistance();
-
-        Employee employee = new Employee();
-        employee.setName("paolo");
-        assistance.setEmployee(employee);
-        Schedule schedule = new Schedule();
-        schedule.setBeginTime(new Date());
-        assistance.setSchedule(schedule);
-        employeeAssistance.add(assistance);
-
-        assistance = new Assistance();
-        employee = new Employee();
-        employee.setName("SERGIO");
-        assistance.setEmployee(employee);
-        schedule = new Schedule();
-        schedule.setBeginTime(new Date());
-        assistance.setSchedule(schedule);
-        employeeAssistance.add(assistance);
-
-        registerAssistanceTableModel.loadData(employeeAssistance);
+        justifyInconsistenceTableModel.loadData(inconsistenceJustifications);
 
         jLCurrentDay.setText("" + new Date());
     }
@@ -81,7 +57,7 @@ public class ListEmployeeInconsistenceJustificationView extends javax.swing.JInt
         jTFBalance.setEnabled(false);
         jTFBalance.setFocusable(false);
 
-        jTAssistance.setModel(registerAssistanceTableModel);
+        jTAssistance.setModel(justifyInconsistenceTableModel);
         jScrollPane2.setViewportView(jTAssistance);
 
         jLCurrentDay.setText("Date");
@@ -164,7 +140,7 @@ public class ListEmployeeInconsistenceJustificationView extends javax.swing.JInt
     }//GEN-LAST:event_jBCancelActionPerformed
 
     private void jBOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOkActionPerformed
-        ErrorMessage errorMessage = AssistanceController.registerAssistance(registerAssistanceTableModel.getData());
+        ErrorMessage errorMessage = JustificationController.acceptOrDenyJustification(justifyInconsistenceTableModel.getData());
         JOptionPane.showMessageDialog(this, errorMessage.getMessage());
         if (errorMessage.isValid()) {
             this.dispose();
@@ -185,9 +161,12 @@ public class ListEmployeeInconsistenceJustificationView extends javax.swing.JInt
     private void initActions() {
         jTAssistance.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {
             if (jTAssistance.getSelectedRow() > -1) {
-                currentEmployeeInModification = jTAssistance.getSelectedRow();
-                Assistance assistance = registerAssistanceTableModel.getData(jTAssistance.getSelectedRow());
+                //currentJustification = jTAssistance.getSelectedRow();
+                //Assistance assistance = registerAssistanceTableModel.getData(jTAssistance.getSelectedRow());
                 //Here I open a new window to the detail
+                AttendEmployeeInconsistenceJustificationView aeijv = new AttendEmployeeInconsistenceJustificationView(new InconsistenceJustification());
+                aeijv.setVisible(true);
+                this.getParent().add(aeijv);
             }
         });
     }

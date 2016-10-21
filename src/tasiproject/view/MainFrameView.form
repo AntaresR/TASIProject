@@ -74,12 +74,18 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Justify"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIJustifyActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMIReviseJustification">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Revise"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIReviseJustificationActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

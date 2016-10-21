@@ -11,16 +11,16 @@ import tasiproject.models.InconsistenceJustification;
  *
  * @author paolo
  */
-public class AttendEmployeeInconsistenceJustificationView extends javax.swing.JInternalFrame {
+public class JustificatyInconsistenceView extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form RegisterEmployee
      */
-    public AttendEmployeeInconsistenceJustificationView() {
+    public JustificatyInconsistenceView() {
         initComponents();
     }
 
-    AttendEmployeeInconsistenceJustificationView(InconsistenceJustification inconsistenceJustification) {
+    JustificatyInconsistenceView(InconsistenceJustification inconsistenceJustification) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

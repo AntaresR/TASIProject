@@ -98,10 +98,20 @@ public class MainFrameView extends javax.swing.JFrame {
         jMenuJustifications.setText("Justifications");
 
         jMIJustify.setText("Justify");
+        jMIJustify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIJustifyActionPerformed(evt);
+            }
+        });
         jMenuJustifications.add(jMIJustify);
 
         jMIReviseJustification.setText("Revise");
         jMIReviseJustification.setToolTipText("");
+        jMIReviseJustification.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIReviseJustificationActionPerformed(evt);
+            }
+        });
         jMenuJustifications.add(jMIReviseJustification);
 
         jMenuBar1.add(jMenuJustifications);
@@ -155,6 +165,18 @@ public class MainFrameView extends javax.swing.JFrame {
         this.add(rav);
     }//GEN-LAST:event_jMIRegisterAssistanceActionPerformed
 
+    private void jMIJustifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIJustifyActionPerformed
+        JustificatyInconsistenceView jiv = new JustificatyInconsistenceView();
+        jiv.setVisible(true);
+        this.add(jiv);
+    }//GEN-LAST:event_jMIJustifyActionPerformed
+
+    private void jMIReviseJustificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIReviseJustificationActionPerformed
+        ListEmployeeInconsistenceJustificationView leijv = new ListEmployeeInconsistenceJustificationView();
+        leijv.setVisible(true);
+        this.add(leijv);
+    }//GEN-LAST:event_jMIReviseJustificationActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -171,23 +193,18 @@ public class MainFrameView extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrameView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrameView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrameView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainFrameView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
 
+        //</editor-fold>
+        //</editor-fold>
+
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainFrameView().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new MainFrameView().setVisible(true);
         });
     }
 
